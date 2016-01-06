@@ -12,46 +12,46 @@ object Main extends js.JSApp {
 
   import createjs._
 
-  private val sounds = Seq(
-    "abys-mohl-toto",
-    "ani-ocko-nenasadis",
-    "ani-za-kokot-vole",
-    "banalni-vec",
-    "do-pice",
-    "hajzli-jedni",
-    "hosi-to-je-neuveritelne",
-    "ja-se-z-toho-musim-pojebat",
-    "ja-to-mrdam",
-    "ja-to-nejdu-delat",
-    "jedinou-picovinku",
-    "jedu-do-pici-stadyma",
-    "kurva-do-pice-to-neni-mozne",
-    "kurva",
-    "kurva-uz",
-    "nebudu-to-delat",
-    "nejvetsi-blbec-na-zemekouli",
-    "nenasadim",
-    "ne-nenasadis-ho",
-    "neresitelny-problem-hosi",
-    "nevim-jak",
-    "okamzite-zabit-ty-kurvy",
-    "past-vedle-pasti-pico",
-    "pockej-kamo",
-    "tady-musis-vsechno-rozdelat",
-    "to-je-pico-nemozne",
-    "to-neni-normalni-kurva",
-    "to-sou-nervy-ty-pico",
-    "tuto-picu-potrebuju-utahnout",
-    "zasrane-zamrdane"
+  private val sounds = Map(
+    "Abys mohl toto!" -> "abys-mohl-toto",
+    "Ani očko nenasadíš!" -> "ani-ocko-nenasadis",
+    "Ani za kokot, vole!" -> "ani-za-kokot-vole",
+    "Banální věc..." -> "banalni-vec",
+    "Největší blbec na zeměkouli" -> "nejvetsi-blbec-na-zemekouli",
+    "Do píče!" -> "do-pice",
+    "Hajzli jedni!" -> "hajzli-jedni",
+    "Hoši, to je neuvěřitelné!" -> "hosi-to-je-neuveritelne",
+    "Já se z toho musím pojebat!" -> "ja-se-z-toho-musim-pojebat",
+    "Já to mrdám!" -> "ja-to-mrdam",
+    "Já to nejdu dělat!" -> "ja-to-nejdu-delat",
+    "Jedinou pičovinku..." -> "jedinou-picovinku",
+    "Jedu do piče z tadyma!" -> "jedu-do-pici-stadyma",
+    "To není možné!" -> "kurva-do-pice-to-neni-mozne",
+    "Kurva!" -> "kurva",
+    "Kurva už!" -> "kurva-uz",
+    "Nebudu to dělat!" -> "nebudu-to-delat",
+    "Nenasadím!" -> "nenasadim",
+    "Ne, nenasadíš ho!" -> "ne-nenasadis-ho",
+    "Neřešitelný problém, hoši!" -> "neresitelny-problem-hosi",
+    "Nevím jak" -> "nevim-jak",
+    "Okamžitě zabít ty kurvy!" -> "okamzite-zabit-ty-kurvy",
+    "Past vedle pasti, pičo!" -> "past-vedle-pasti-pico",
+    "Počkej kámo..." -> "pockej-kamo",
+    "Tady všechno musíš rozdělat!" -> "tady-musis-vsechno-rozdelat",
+    "To je pičo nemožné!" -> "to-je-pico-nemozne",
+    "To není normální, kurva!" -> "to-neni-normalni-kurva",
+    "To sou nervy, ty pičo!" -> "to-sou-nervy-ty-pico",
+    "Tuto piču potřebuju utáhnout" -> "tuto-picu-potrebuju-utahnout",
+    "Zasrané, zamrdané" -> "zasrane-zamrdane"
   )
 
   def main(): Unit = {
-    sounds.foreach { soundName =>
+    sounds.foreach { case (title, soundName) =>
       //register sound
       Sound.registerSound(s"sfx/$soundName.mp3", soundName)
 
       //create button
-      jQuery("body").append(s"""<span onclick='ILoveMyJob.play("$soundName")'>$soundName</span><br>""")
+      jQuery("body").append(s"""<span onclick='ILoveMyJob.play("$soundName")'>$title</span><br>""")
     }
   }
 
