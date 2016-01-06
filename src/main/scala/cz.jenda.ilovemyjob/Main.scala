@@ -51,9 +51,14 @@ object Main extends js.JSApp {
       Sound.registerSound(s"sfx/$soundName.mp3", soundName)
 
       //create button
-      jQuery("body").append(s"""<span onclick='ILoveMyJob.play("$soundName")'>$title</span><br>""")
+      jQuery("#main").append(button(title, soundName))
     }
   }
+
+  private def button(title: String, id: String): String =
+    s"""
+       |<div class="button" onclick='ILoveMyJob.play("$id")'>$title</div>
+     """.stripMargin
 
   @JSExport
   def play(id: String): Unit = {

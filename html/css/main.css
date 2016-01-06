@@ -1,0 +1,31 @@
+body {
+    background-color: beige;
+    /*font-family: monospace, serif;*/
+    font-size: 16px;
+    text-align: center;
+}
+
+div#main {
+    position: absolute;
+    left: 50%;
+    width: 1000px;
+    margin: 20px 0 20px -500px;
+    display: block;
+}
+
+div.button {
+    position: relative;
+    background-color: deepskyblue;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 70px;
+    width: 172px;
+    cursor: pointer;
+    display: inline-table;
+    padding: 35px 5px 5px 5px;
+    margin: 5px;
+}
+
+div.button:hover {
+    background-color: aliceblue;
+}
