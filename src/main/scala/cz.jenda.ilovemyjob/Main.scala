@@ -56,9 +56,7 @@ object Main extends js.JSApp {
   }
 
   private def button(title: String, id: String): String =
-    s"""
-       |<div class="button" onclick='ILoveMyJob.play("$id")'>$title</div>
-     """.stripMargin
+    s"""<div class="button" onclick='ILoveMyJob.play("$id")'>$title</div>""".stripMargin
 
   @JSExport
   def play(id: String): Unit = {

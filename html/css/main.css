@@ -1,28 +1,29 @@
 body {
-    background-color: beige;
-    /*font-family: monospace, serif;*/
+    background-color: #ededed;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;
+    color: #646464;
+    text-transform: uppercase;
 }
 
 div#main {
     position: absolute;
     left: 50%;
     width: 1000px;
-    margin: 20px 0 20px -500px;
+    margin: 10px 0 10px -500px;
     display: block;
 }
 
 div.button {
     position: relative;
-    background-color: deepskyblue;
-    border: 2px solid black;
-    border-radius: 10px;
-    height: 70px;
+    background-color: #bae4ff;
+    border: 1px solid #646464;
+    height: 89px;
     width: 172px;
     cursor: pointer;
     display: inline-table;
-    padding: 35px 5px 5px 5px;
+    padding: 45px 5px 5px 5px;
     margin: 5px;
 }
 
