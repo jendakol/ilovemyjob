@@ -1,8 +1,10 @@
 package cz.jenda.ilovemyjob
 
+import org.scalajs.dom
 import org.scalajs.jquery.jQuery
 
 import scala.scalajs.js
+import scala.scalajs.js.Any._
 import scala.scalajs.js.annotation.JSExport
 
 /**
@@ -53,6 +55,24 @@ object Main extends js.JSApp {
       //create button
       jQuery("#main").append(button(title, soundName))
     }
+
+    Option(dom.location.hash)
+      .map { s =>
+        s.trim.substring(1) //strip start #
+      }.filter(_.length > 0)
+      .flatMap { id =>
+        println(s"Trying to play '$id' from web link")
+        sounds.values.find(_ == id)
+      }.foreach { idToPlay =>
+      Sound.on("fileload", (e: Event) => {
+        val id = e.src.split("[\\./]")(1)
+        println(s"Loaded $id")
+
+        if (id == idToPlay) play(id)
+
+        fromUnit(()) //implicit conversion doesn't work over 2 levels
+      })
+    }
   }
 
   private def button(title: String, id: String): String =
@@ -63,5 +83,7 @@ object Main extends js.JSApp {
     println(s"Playing '$id")
     Sound.stop()
     Sound.play(id)
+
+    dom.location.hash = id
   }
 }

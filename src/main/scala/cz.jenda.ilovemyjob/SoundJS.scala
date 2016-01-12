@@ -14,9 +14,23 @@ trait SoundJS extends js.Object {
   def play(id: String): Unit = js.native
 
   def stop(): Unit = js.native
+
+  def on(event: String, handler: js.Function1[Event, js.Any]): Unit = js.native
 }
 
 @js.native
 trait CreateJs extends js.Object {
   val Sound: SoundJS = js.native
+}
+
+@js.native
+@JSName("createjs.Event")
+trait Event extends js.Object {
+  def id: String
+
+  def src: String
+
+  def data: String
+
+  def sprite: String
 }
