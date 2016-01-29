@@ -13,7 +13,7 @@ import scala.scalajs.js
 import scala.scalajs.js.Any
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Success
-
+import Implicits._
 /**
   * @author Jenda Kolena, jendakolena@gmail.com
   */
@@ -103,7 +103,7 @@ object Main extends js.JSApp {
         saveNewOrder
       }
       }
-    ).asInstanceOf[SortableSettings])
+    ))
   }
 
   private val yearMillis = TimeUnit.MILLISECONDS.convert(365, TimeUnit.DAYS)
@@ -126,8 +126,9 @@ object Main extends js.JSApp {
       }
   }
 
-  private def createButton(title: String, id: String): String =
-    s"""<div class="button" id="$id" onclick='ILoveMyJob.play("$id")'>$title</div>""".stripMargin
+  private def createButton(title: String, id: String): String = {
+    s"""<div class="button" id="$id" onclick='ILoveMyJob.play("$id")'>$title</div>"""
+  }
 
   @JSExport
   def play(id: String): Unit = {

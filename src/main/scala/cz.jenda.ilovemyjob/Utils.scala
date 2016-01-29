@@ -2,6 +2,7 @@ package cz.jenda.ilovemyjob
 
 import java.util.Date
 
+import cz.jenda.ilovemyjob.Implicits._
 import org.scalajs.dom
 import org.scalajs.jquery._
 import upickle.default._
@@ -40,19 +41,21 @@ object Utils {
         p.failure(AjaxException(status, error, jqXHR))
       }
       }
-    ).asInstanceOf[JQueryAjaxSettings])
+    ))
 
     p.future.andThen {
       case Failure(e) => println(Formatter.formatExceptionWithCause(e))
     }
   }
+
+  private case class AjaxResult(status: String)
+
 }
 
 case class AjaxException(status: String, desc: String, xhr: JQueryXHR) extends RuntimeException(s"status=$status, error=$desc")
 
 case class AjaxCallback(data: String, status: String, xhr: JQueryXHR)
 
-private case class AjaxResult(status: String)
 
 object Cookies {
   def create(cookie: Cookie, expires: Date): Unit = {
